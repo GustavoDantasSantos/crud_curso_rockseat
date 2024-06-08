@@ -15,12 +15,12 @@ import com.gustavo.br.crud_rockeseat_desafio01.course.services.CreateCourseServi
 public class CreateCourseController {
     
     @Autowired
-    private CreateCourseService courseService;
+    private CreateCourseService service;
 
     @PostMapping("/")
     public ResponseEntity<Object> create(@RequestBody CourseEntity courseEntity) {
         try {
-            var courseSaved = this.courseService.execute(courseEntity);
+            var courseSaved = this.service.execute(courseEntity);
             return ResponseEntity.ok().body(courseSaved);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());
