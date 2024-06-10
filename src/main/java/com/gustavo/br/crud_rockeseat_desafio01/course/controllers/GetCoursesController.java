@@ -2,13 +2,13 @@ package com.gustavo.br.crud_rockeseat_desafio01.course.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.gustavo.br.crud_rockeseat_desafio01.course.services.GetCoursesService;
 
-@Controller
+@RestController
 @RequestMapping("/course")
 public class GetCoursesController {
     
