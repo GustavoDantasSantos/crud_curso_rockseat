@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.gustavo.br.crud_rockeseat_desafio01.course.entity.CourseEntity;
+import com.gustavo.br.crud_rockeseat_desafio01.course.dto.RequestCourseDTO;
 import com.gustavo.br.crud_rockeseat_desafio01.course.services.CreateCourseService;
 
 @RestController
@@ -15,12 +15,12 @@ import com.gustavo.br.crud_rockeseat_desafio01.course.services.CreateCourseServi
 public class CreateCourseController {
     
     @Autowired
-    private CreateCourseService courseService;
+    private CreateCourseService service;
 
     @PostMapping("/")
-    public ResponseEntity<Object> create(@RequestBody CourseEntity courseEntity) {
+    public ResponseEntity<Object> create(@RequestBody RequestCourseDTO courseDTO) {
         try {
-            var courseSaved = this.courseService.execute(courseEntity);
+            var courseSaved = this.service.execute(courseDTO);
             return ResponseEntity.ok().body(courseSaved);
         } catch (Exception e) {
             return ResponseEntity.badRequest().body(e.getMessage());

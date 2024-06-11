@@ -11,4 +11,5 @@ import com.gustavo.br.crud_rockeseat_desafio01.course.entity.CourseEntity;
 @Repository
 public interface CourseRepository extends JpaRepository<CourseEntity, UUID>{
     Optional<CourseEntity> findByName(String name);
+    Optional<CourseEntity> findByNameOrCategory(String name, String category);
 }
