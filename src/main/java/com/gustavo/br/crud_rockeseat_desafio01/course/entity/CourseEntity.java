@@ -36,4 +36,6 @@ public class CourseEntity {
         this.category = courseDTO.getCategory();
         this.active = true;
     }
+
+    public CourseEntity() {}
 }
