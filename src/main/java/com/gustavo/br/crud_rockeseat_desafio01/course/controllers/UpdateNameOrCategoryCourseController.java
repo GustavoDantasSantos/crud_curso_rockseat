@@ -14,6 +14,9 @@ import com.gustavo.br.crud_rockeseat_desafio01.course.dto.RequestCourseDTO;
 import com.gustavo.br.crud_rockeseat_desafio01.course.entity.CourseEntity;
 import com.gustavo.br.crud_rockeseat_desafio01.course.services.UpdateNameOrCategoryCourseService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/course")
 public class UpdateNameOrCategoryCourseController {
@@ -22,6 +25,11 @@ public class UpdateNameOrCategoryCourseController {
     private UpdateNameOrCategoryCourseService service;
 
     @PutMapping("/{courseid}")
+    @Tag(name = "Cursos", description = "Esses endpoint serve para criação de crud")
+    @Operation(
+        summary = "Atualizando nome e categoria de um curso", 
+        description = "esse endpoint serve para atualizar nome e categoria de um curso"
+    )
     public ResponseEntity<Object> update(@PathVariable("courseid") UUID id, @RequestBody RequestCourseDTO courseDTO) {
         try {
             CourseEntity updateCourse = this.service.execute(id, courseDTO);

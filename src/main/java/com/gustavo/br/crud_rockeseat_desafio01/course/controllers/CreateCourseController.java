@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 import com.gustavo.br.crud_rockeseat_desafio01.course.dto.RequestCourseDTO;
 import com.gustavo.br.crud_rockeseat_desafio01.course.services.CreateCourseService;
 
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
 @RestController
 @RequestMapping("/course")
 public class CreateCourseController {
@@ -18,6 +21,8 @@ public class CreateCourseController {
     private CreateCourseService service;
 
     @PostMapping("/")
+    @Tag(name = "Cursos", description = "Esses endpoint serve para criação de crud")
+    @Operation(summary = "Criando um curso", description = "esse endpoint serve para criação de um curso")
     public ResponseEntity<Object> create(@RequestBody RequestCourseDTO courseDTO) {
         try {
             var courseSaved = this.service.execute(courseDTO);
