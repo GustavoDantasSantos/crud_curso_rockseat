@@ -6,6 +6,8 @@ import java.util.UUID;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.gustavo.br.crud_rockeseat_desafio01.course.dto.RequestCourseDTO;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -28,4 +30,10 @@ public class CourseEntity {
     
     @UpdateTimestamp
     private LocalDateTime updated_at;
+
+    public CourseEntity(RequestCourseDTO courseDTO) {
+        this.name = courseDTO.getName();
+        this.category = courseDTO.getCategory();
+        this.active = true;
+    }
 }
