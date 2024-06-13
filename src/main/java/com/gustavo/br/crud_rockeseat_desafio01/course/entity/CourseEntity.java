@@ -23,7 +23,7 @@ public class CourseEntity {
 
     private String name;
     private String category;
-    private Boolean active;
+    private String active;
     
     @CreationTimestamp
     private LocalDateTime created_at;
@@ -34,7 +34,7 @@ public class CourseEntity {
     public CourseEntity(RequestCourseDTO courseDTO) {
         this.name = courseDTO.getName();
         this.category = courseDTO.getCategory();
-        this.active = true;
+        this.active = "active";
     }
 
     public CourseEntity() {}
