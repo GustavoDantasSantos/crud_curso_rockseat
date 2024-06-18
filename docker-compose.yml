@@ -1,5 +1,14 @@
 version: '3.8'
 
+networks:
+  crud_network:
+    driver: bridge
+
+volumes:
+  prometheus_data:
+  grafana_data:
+
+
 services:
   postgres-compose:
     container_name: crud_cursos
@@ -10,3 +19,20 @@ services:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
       -  POSTGRES_DB=crud_curso
+  prometheus:
+    container_name: prometheus
+    image: prom/prometheus:latest
+    volumes: 
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
+    networks:
+      - crud_network
+    ports:
+      - 9090:9090
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:latest
+    ports:
+      - 3000:3000
+    networks:
+      - crud_network
