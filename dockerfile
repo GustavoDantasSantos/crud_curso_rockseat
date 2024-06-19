@@ -1,7 +1,7 @@
 FROM ubuntu:latest as build
 
 RUN apt-get update
-RUN apt-get snap search openjdk -y
+RUN eclipse-temurin:22-jdk-jammy
 COPY . .
 
 RUN apt-get install maven -y
